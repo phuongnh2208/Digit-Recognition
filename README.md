@@ -85,3 +85,4 @@ streamlit run app.py
 | **Macro F1-Score** | **0.8860** |
 | **Weighted F1-Score** | **0.8863** |
 | **Thời gian suy luận** | `< 5 ms` / ảnh |
+

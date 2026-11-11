@@ -61,18 +61,17 @@ def render():
     with left:
         with st.container(border=True):
             icon_title("cpu", "Thông số kỹ thuật mô hình")
-            table_html = """
-            <table style="width:100%; border-collapse:collapse; font-size:13.5px;">
-            """
-            for k, v in MODEL_INFO.items():
-                table_html += f"""
-                <tr style="border-bottom:1px solid #F1F5F9;">
-                    <td style="padding:10px 4px; color:#64748B; font-weight:600; width:40%;">{k}</td>
-                    <td style="padding:10px 4px; color:#0F172A; font-weight:700;">{v}</td>
-                </tr>
-                """
-            table_html += "</table>"
-            st.markdown(table_html, unsafe_allow_html=True)
+            table_rows = "".join(
+                f'<tr style="border-bottom:1px solid #F1F5F9;">'
+                f'<td style="padding:10px 6px; color:#64748B; font-weight:600; width:42%;">{k}</td>'
+                f'<td style="padding:10px 6px; color:#0F172A; font-weight:700;">{v}</td>'
+                f'</tr>'
+                for k, v in MODEL_INFO.items()
+            )
+            st.markdown(
+                f'<table style="width:100%; border-collapse:collapse; font-size:13.5px;">{table_rows}</table>',
+                unsafe_allow_html=True
+            )
 
     with right:
         with st.container(border=True):

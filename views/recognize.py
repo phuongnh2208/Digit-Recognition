@@ -276,15 +276,12 @@ def render():
             r1, r2 = st.columns([1.1, 0.9], gap="medium")
             with r1:
                 st.markdown(
-                    f"""
-                    <div class="result-card-container">
-                        <div class="result-glow-tag">CHỮ SỐ DỰ ĐOÁN</div>
-                        <div class="result-glow-digit">{predicted_digit}</div>
-                        <div class="result-confidence-pill">
-                            <i class="bi bi-shield-check" style="font-size:15px;"></i> Độ tin cậy: {confidence:.2f}%
-                        </div>
-                    </div>
-                    """,
+                    f'<div class="result-card-container">'
+                    f'<div class="result-glow-tag">CHỮ SỐ DỰ ĐOÁN</div>'
+                    f'<div class="result-glow-digit">{predicted_digit}</div>'
+                    f'<div class="result-confidence-pill">'
+                    f'<i class="bi bi-shield-check" style="font-size:15px;"></i> Độ tin cậy: {confidence:.2f}%'
+                    f'</div></div>',
                     unsafe_allow_html=True
                 )
 
@@ -321,13 +318,11 @@ def render():
                     digit_color = "#1D4ED8" if is_winner else "#475569"
                     rank_color = "#2563EB" if is_winner else "#94A3B8"
                     st.markdown(
-                        f"""
-                        <div style="background:{badge_bg};border:1.5px solid {badge_border};border-radius:12px;padding:10px 8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-                            <span style="font-size:11px;color:{rank_color};font-weight:800;letter-spacing:0.5px;">HẠNG #{rank}</span>
-                            <div style="font-size:24px;font-weight:800;color:{digit_color};margin:2px 0;">Số {idx}</div>
-                            <div style="font-size:12.5px;color:#334155;font-weight:700;">{prob_val:.2f}%</div>
-                        </div>
-                        """,
+                        f'<div style="background:{badge_bg};border:1.5px solid {badge_border};border-radius:12px;padding:10px 8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.03);">'
+                        f'<span style="font-size:11px;color:{rank_color};font-weight:800;letter-spacing:0.5px;">HẠNG #{rank}</span>'
+                        f'<div style="font-size:24px;font-weight:800;color:{digit_color};margin:2px 0;">Số {idx}</div>'
+                        f'<div style="font-size:12.5px;color:#334155;font-weight:700;">{prob_val:.2f}%</div>'
+                        f'</div>',
                         unsafe_allow_html=True
                     )
 

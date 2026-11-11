@@ -82,16 +82,13 @@ def render():
 
             with c_note:
                 st.markdown(
-                    """
-                    <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:16px;">
-                        <div style="font-weight:700;color:#1E293B;margin-bottom:8px;">Nhận xét thực nghiệm từ Notebook:</div>
-                        <ul style="color:#475569;font-size:13px;padding-left:18px;margin:0;">
-                            <li><b>Tốc độ hội tụ:</b> Cả hai đường giảm rất nhanh trong 40 epoch đầu tiên (từ 2.30 xuống ~0.7), sau đó giảm dần và đạt mức ổn định ~0.47 ở epoch 150.</li>
-                            <li style="margin-top:6px;"><b>Đánh giá Overfitting:</b> Đường <code>Validation Loss</code> bám rất sát đường <code>Training Loss</code> và không hề có dấu hiệu ngóc lên ở các vòng lặp sau.</li>
-                            <li style="margin-top:6px;"><b>Kết luận:</b> Mô hình hoạt động ổn định, không bị học vẹt hay quá khớp trên dữ liệu kiểm tra.</li>
-                        </ul>
-                    </div>
-                    """,
+                    '<div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:16px;">'
+                    '<div style="font-weight:700;color:#1E293B;margin-bottom:8px;">Nhận xét thực nghiệm từ Notebook:</div>'
+                    '<ul style="color:#475569;font-size:13px;padding-left:18px;margin:0;">'
+                    '<li><b>Tốc độ hội tụ:</b> Cả hai đường giảm rất nhanh trong 40 epoch đầu tiên (từ 2.30 xuống ~0.7), sau đó giảm dần và đạt mức ổn định ~0.47 ở epoch 150.</li>'
+                    '<li style="margin-top:6px;"><b>Đánh giá Overfitting:</b> Đường <code>Validation Loss</code> bám rất sát đường <code>Training Loss</code> và không hề có dấu hiệu ngóc lên ở các vòng lặp sau.</li>'
+                    '<li style="margin-top:6px;"><b>Kết luận:</b> Mô hình hoạt động ổn định, không bị học vẹt hay quá khớp trên dữ liệu kiểm tra.</li>'
+                    '</ul></div>',
                     unsafe_allow_html=True
                 )
 
