@@ -86,3 +86,15 @@ streamlit run app.py
 | **Weighted F1-Score** | **0.8863** |
 | **Thời gian suy luận** | `< 5 ms` / ảnh |
 
+---
+
+## 👥 Thành viên thực hiện đề tài
+
+| STT | Họ và tên sinh viên | Mã số sinh viên (MSSV) |
+| :---: | :--- | :---: |
+| 1 | **Ngô Khánh Ly** | 735105066 |
+| 2 | **Vì Thị Phương** | 735105087 |
+| 3 | **Nguyễn Bá Lương** | 735105062 |
+| 4 | **Đỗ Quang Vinh** | 735105115 |
+| 5 | **Nguyễn Huyền Phương** | 735105056 |
+

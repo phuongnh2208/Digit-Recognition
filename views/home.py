@@ -73,6 +73,27 @@ def render():
                 unsafe_allow_html=True
             )
 
+            st.markdown("<div style='height:16px;'></div>", unsafe_allow_html=True)
+            icon_title("people-fill", "Thành viên nhóm thực hiện")
+            members = [
+                ("Ngô Khánh Ly", "735105066"),
+                ("Vì Thị Phương", "735105087"),
+                ("Nguyễn Bá Lương", "735105062"),
+                ("Đỗ Quang Vinh", "735105115"),
+                ("Nguyễn Huyền Phương", "735105056"),
+            ]
+            member_rows = "".join(
+                f'<tr style="border-bottom:1px solid #F1F5F9;">'
+                f'<td style="padding:8px 6px; color:#0F172A; font-weight:700;">{name}</td>'
+                f'<td style="padding:8px 6px; color:#2563EB; font-weight:600; text-align:right;">{mssv}</td>'
+                f'</tr>'
+                for name, mssv in members
+            )
+            st.markdown(
+                f'<table style="width:100%; border-collapse:collapse; font-size:13.5px;">{member_rows}</table>',
+                unsafe_allow_html=True
+            )
+
     with right:
         with st.container(border=True):
             icon_title("rocket-takeoff", "Quy trình sử dụng nhanh")
