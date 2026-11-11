@@ -3,9 +3,7 @@ from pathlib import Path
 import numpy as np
 
 
-# =========================================================
 # MODEL CONFIGURATION
-# =========================================================
 
 # Thư mục chứa file model
 MODEL_DIR = Path(__file__).resolve().parent
@@ -14,9 +12,7 @@ MODEL_DIR = Path(__file__).resolve().parent
 WEIGHTS_PATH = MODEL_DIR / "weights_softmax_regression.npy"
 
 
-# =========================================================
 # INPUT CONFIGURATION
-# =========================================================
 
 IMAGE_HEIGHT = 28
 IMAGE_WIDTH = 28
@@ -28,9 +24,7 @@ NUM_CLASSES = 10
 EXPECTED_WEIGHT_SHAPE = (INPUT_SIZE + 1, NUM_CLASSES)
 
 
-# =========================================================
 # MODEL INFORMATION
-# =========================================================
 
 MODEL_NAME = "Softmax Regression"
 MODEL_VERSION = "1.0"
@@ -53,9 +47,7 @@ MODEL_INFO = {
     "Chuẩn hóa dữ liệu": "Pixel uint8 [0, 255] chuẩn hóa về float [0, 1]"
 }
 
-# =========================================================
 # MODEL STATUS
-# =========================================================
 
 def check_model_ready() -> bool:
     """

@@ -5,9 +5,7 @@ import numpy as np
 import streamlit as st
 
 
-# =========================================================
 # MODEL CONFIGURATION
-# =========================================================
 
 MODEL_DIR = Path(__file__).resolve().parent
 
@@ -18,9 +16,7 @@ NUM_CLASSES = 10
 EXPECTED_WEIGHT_SHAPE = (785, 10)
 
 
-# =========================================================
 # LOAD MODEL
-# =========================================================
 
 @st.cache_resource
 def load_model():
@@ -52,9 +48,7 @@ def load_model():
     return weights
 
 
-# =========================================================
 # SOFTMAX
-# =========================================================
 
 def softmax(z):
     """
@@ -80,9 +74,7 @@ def softmax(z):
     )
 
 
-# =========================================================
 # PREDICT
-# =========================================================
 
 def predict(weights, x):
     """
@@ -155,9 +147,7 @@ def predict(weights, x):
     return probabilities.reshape(NUM_CLASSES)
 
 
-# =========================================================
 # PREDICT FROM 28x28 IMAGE (OPTIONAL)
-# =========================================================
 
 def predict_digit(image_28x28):
     """

@@ -223,6 +223,24 @@ def render():
                     raw_image = sample_pil
                     source_description = f"Ảnh mẫu chuẩn MNIST: Chữ số {selected_digit}"
 
+            st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
+            with st.expander("Mẹo nhận diện chính xác nhất (Đặc biệt số 4 & 9)", expanded=False):
+                st.markdown(
+                    """
+                    <div style="font-size:13px; line-height:1.6; color:#334155;">
+                        <p style="margin-bottom:6px;"><strong><i class="bi bi-lightbulb" style="color:#F59E0B;"></i> Đặc trưng mô hình Hồi quy Tuyến tính:</strong><br>
+                        Softmax Regression phân loại dựa trên trọng số từng pixel. Chữ số 4 và 9 có độ tương đồng không gian rất cao:
+                        </p>
+                        <ul style="padding-left:18px; margin-bottom:4px;">
+                            <li><strong>Chữ số 4:</strong> Nên viết <em>hở đỉnh</em> (nét gập góc và nét sổ đứng cắt qua). Tránh khép kín chóp tam giác vì đỉnh nhọn kín sẽ kích hoạt vùng trọng số vòng lặp của số 9.</li>
+                            <li><strong>Chữ số 9:</strong> Viết vòng tròn khép kín ở trên và <em>nét sổ thẳng đứng xuống</em> (tránh uốn cong đuôi sang trái như chữ 'g' vì dễ kích hoạt số 3).</li>
+                            <li><strong>Ảnh chụp điện thoại:</strong> Hệ thống đã tự động khử bóng đổ và viền mép bàn, nên chụp chữ viết rõ nét và đủ sáng.</li>
+                        </ul>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
 
     # CỘT PHẢI: KẾT QUẢ DỰ ĐOÁN & PHÂN TÍCH
 
