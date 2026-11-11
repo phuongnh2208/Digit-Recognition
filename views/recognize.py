@@ -126,15 +126,18 @@ def render():
                     with c_slider:
                         stroke_width = st.slider(
                             "Độ dày nét cọ (px):",
-                            min_value=10,
-                            max_value=28,
-                            value=18,
+                            min_value=14,
+                            max_value=32,
+                            value=22,
                             step=2,
+                            help="Khuyến nghị 20–24px để nét chữ khi thu nhỏ về 28×28 đạt độ dày chuẩn MNIST.",
                             key="canvas_stroke_width"
                         )
                     with c_btn:
                         st.markdown("<div style='height:28px;'></div>", unsafe_allow_html=True)
                         clear_canvas = st.button("Xóa nét vẽ", icon=":material/delete:", key="btn_clear_canvas", use_container_width=True)
+
+                    st.caption("Khuyến nghị: Để nét cọ **20–24px**, vẽ chữ số to rõ ở giữa khung hình để mô hình nhận diện chính xác nhất.")
 
                     if "canvas_version" not in st.session_state:
                         st.session_state["canvas_version"] = 0
