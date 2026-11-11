@@ -234,25 +234,49 @@ def preprocess_image(
                 binary[:, :margin] = 0
                 binary[:, -margin:] = 0
 
-                # Lọc thành phần liên thông (Connected Components)
+                # Lọc thành phần liên thông: Chỉ giữ cụm nét của chữ số chính
                 num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(binary)
-                clean_binary = np.zeros_like(binary)
+                candidates = []
                 total_area = w * h
 
                 for i in range(1, num_labels):
                     x, y, sw, sh, area = stats[i]
-                    # Bỏ các vệt nhiễu quá nhỏ hoặc nền chiếm quá nửa bức ảnh
-                    if area < 15 or area > 0.45 * total_area:
-                        continue
-                    aspect = sw / float(sh) if sh > 0 else 0
-                    # Loại bỏ các thanh dài nằm ngang hoặc dọc sát rìa (mép bàn, cạnh giấy)
+                    # Loại bỏ các dải mép bàn hoặc nền quá lớn
                     if sw > 0.65 * w or sh > 0.85 * h:
                         continue
-                    if aspect > 5.5 or aspect < 0.08:
+                    if area < 18 or area > 0.45 * total_area:
                         continue
-                    clean_binary[labels == i] = 255
+                    aspect = sw / float(sh) if sh > 0 else 0
+                    if aspect > 5.0 or aspect < 0.1:
+                        continue
+                    candidates.append((i, area))
 
-                if np.sum(clean_binary > 0) > 30:
+                if candidates:
+                    # Thành phần có diện tích lớn nhất làm nét chính
+                    candidates.sort(key=lambda c: c[1], reverse=True)
+                    main_idx, max_area = candidates[0]
+                    main_w = stats[main_idx, 2]
+                    main_h = stats[main_idx, 3]
+                    main_cx, main_cy = centroids[main_idx]
+
+                    clean_binary = np.zeros_like(binary)
+                    clean_binary[labels == main_idx] = 255
+
+                    # Chỉ giữ các nét phụ nếu nằm sát nét chính (ví dụ nét cắt số 4, nét ngang số 5, 7)
+                    # Loại bỏ triệt để các hạt bụi, chấm bẩn ở góc hoặc rìa ngoài
+                    max_dim = max(main_w, main_h)
+                    for i, area in candidates[1:]:
+                        cx, cy = centroids[i]
+                        dist = float(np.hypot(cx - main_cx, cy - main_cy))
+                        if dist < 1.25 * max_dim and area >= 0.08 * max_area:
+                            clean_binary[labels == i] = 255
+
+                    # Nối nhẹ các nét bút chì bị đứt đoạn do phân ngưỡng
+                    clean_binary = cv2.morphologyEx(
+                        clean_binary,
+                        cv2.MORPH_CLOSE,
+                        cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+                    )
                     binary = clean_binary
 
             # 4. Tìm khung bao quanh chữ số (Bounding Box)
