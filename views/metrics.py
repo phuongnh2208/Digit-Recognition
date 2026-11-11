@@ -25,9 +25,7 @@ def render():
     with open(METRICS_PATH, "r", encoding="utf-8") as f:
         metrics = json.load(f)
 
-    # ------------------------------------------------------------------
     # 1. CÁC CHỈ SỐ TỔNG QUAN (KPIs)
-    # ------------------------------------------------------------------
     k1, k2, k3, k4 = st.columns(4)
     with k1:
         kpi_card(
@@ -56,9 +54,7 @@ def render():
 
     st.markdown("<div style='height:16px;'></div>", unsafe_allow_html=True)
 
-    # ------------------------------------------------------------------
     # 2. TIẾN TRÌNH HUẤN LUYỆN & HỘI TỤ (LOSS CURVES)
-    # ------------------------------------------------------------------
     with st.container(border=True):
         icon_title("graph-up", "Tiến trình hội tụ Loss qua 150 Epochs")
         st.markdown(
@@ -94,9 +90,7 @@ def render():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ------------------------------------------------------------------
     # 3. MA TRẬN NHẦM LẪN (CONFUSION MATRIX)
-    # ------------------------------------------------------------------
     c_cm, c_misclass = st.columns([1.2, 1], gap="large")
 
     with c_cm:
@@ -174,9 +168,7 @@ def render():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ------------------------------------------------------------------
     # 4. BÁO CÁO PHÂN LOẠI CHI TIẾT (PER-CLASS REPORT)
-    # ------------------------------------------------------------------
     with st.container(border=True):
         icon_title("table", "Báo cáo phân loại chi tiết từng chữ số (0 đến 9)")
         st.markdown(
@@ -205,9 +197,7 @@ def render():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ------------------------------------------------------------------
     # 5. CƠ SỞ TOÁN HỌC & ĐÁNH GIÁ MÔ HÌNH (TỪ NOTEBOOK)
-    # ------------------------------------------------------------------
     with st.container(border=True):
         icon_title("journal-code", "Cơ sở lý thuyết & Đánh giá mô hình")
 
