@@ -93,12 +93,21 @@ def render():
                     help="Hỗ trợ tối đa 5MB. Ảnh rõ nét, chữ số nằm ở trung tâm."
                 )
                 if uploaded_file is not None:
-                    try:
-                        raw_image = load_uploaded_image(uploaded_file)
-                        source_description = f"Ảnh tải lên: `{uploaded_file.name}`"
-                        st.image(raw_image, caption="Ảnh gốc tải lên", width=200)
-                    except InvalidImageError as err:
-                        st.warning(str(err), icon=":material/warning:")
+                    # Kiểm tra định dạng tệp hợp lệ trước khi xử lý
+                    allowed_ext = {"png", "jpg", "jpeg"}
+                    file_ext = uploaded_file.name.lower().split('.')[-1]
+                    if file_ext not in allowed_ext:
+                        st.warning(
+                            f"Định dạng tệp `{uploaded_file.name}` không hợp lệ. Vui lòng tải ảnh PNG, JPG hoặc JPEG.",
+                            icon=":material/warning:"
+                        )
+                    else:
+                        try:
+                            raw_image = load_uploaded_image(uploaded_file)
+                            source_description = f"Ảnh tải lên: `{uploaded_file.name}`"
+                            st.image(raw_image, caption="Ảnh gốc tải lên", width=200)
+                        except InvalidImageError as err:
+                            st.warning(str(err), icon=":material/warning:")
 
 
             # PHƯƠNG THỨC 2: VẼ TRỰC TIẾP (CANVAS)

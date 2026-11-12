@@ -88,7 +88,7 @@ streamlit run app.py
 
 ---
 
-## 👥 Thành viên thực hiện đề tài
+## 👥 Thành viên thực hiện 
 
 | STT | Họ và tên sinh viên | Mã số sinh viên (MSSV) |
 | :---: | :--- | :---: |
